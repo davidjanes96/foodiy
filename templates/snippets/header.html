@@ -64,20 +64,28 @@
         border-radius:20px;
     }
 
-    .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary:visited {
+    .btn-outline-primary, .btn-outline-primary:visited {
         color: orange !important;
         border-color: orange !important;
     }
-    .btn-outline-primary:hover{
+    .btn-outline-primary:hover, .btn-outline-primary:focus {
         color: #ffffff !important;
-        background-color: orange;
+        background-color: orange !important;
+        border-color:  rgba(255, 166, 0, 0.6) !important;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 166, 0, 0.6) !important;
+    }
+
+    .btn-outline-primary:active:focus {
+        border-color:  rgba(255, 166, 0, 0.6) !important;
+        background-color: rgb(255, 180, 40) !important;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(177, 115, 0, 0.8) !important;
     }
 
     .card-title {
         font-weight: bold;
     }
-    .form-control:focus {
-    border-color:  rgba(255, 166, 0, 0.6);
+    .form-control:focus, .form-control:active {
+    border-color:  rgba(255, 166, 0, 0.6) !important;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 166, 0, 0.6);
     }
 
@@ -96,7 +104,7 @@
 
             </ul>
             <div class="m-lg-auto search-bar">
-                <form method="get">
+                <form method="get" action="{% url 'home' %}">
                     <div class="has-search">
                             <span class="fa fa-search form-control-feedback"></span>
                         <input type="text" class="form-control search-input" name="q" id="id_q" placeholder="Pretraga...">

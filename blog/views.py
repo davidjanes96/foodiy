@@ -169,4 +169,5 @@ def get_blog_queryset(query=None):
             queryset.append(post)
 
     return list(set(queryset))
+    
 
