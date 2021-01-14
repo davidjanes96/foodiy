@@ -1,0 +1,129 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<style type="text/css">
+    .create-form {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+        margin: auto;
+    }
+  
+    .submit-button{
+        max-width: 200px;
+    }
+    .submit-button-cancel{
+        max-width: 100px;
+    }
+    .add-button{
+        max-width: 100px;
+    }
+    .okvir {
+        border: 1px solid #000;
+    }
+    .sirina {
+        max-width: 150px;
+    }
+</style>
+  
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2 card mb-3 shadow">
+            <form class="create-form" method="post" enctype="multipart/form-data">{% csrf_token %}
+                    <h1 class="h3 mb-3 font-weight-normal text-center mt-3">Objavi svoj recept</h1>
+                <!-- title -->
+                <div class="form-group">
+                    <label for="id_title">Naziv:</label>
+                    <input class="form-control" type="text" name="title" id="id_title" placeholder="Unesi naziv" required autofocus>
+                </div>
+  
+                <!-- Body -->
+                <div class="form-group">
+                    <label for="id_body">Opis:</label>
+                    <textarea class="form-control" rows="4" type="text" name="body" id="id_body" placeholder="Ovdje unesi opis recepta..." required></textarea>
+                </div>
+                
+                <!-- Sastojci -->
+                <div class="form-group">
+                    <label for="id_ingredient">Sastojci:</label>
+                    <div class="input_fields_wrap">
+                        <div>
+                            <input type="text" class="form-control broj" name="ingredient_0" placeholder="Sastojak..." required>
+                        </div>               
+                    </div>
+                    <div class="mt-2">
+                        <button class="m-auto btn btn-outline-primary btn-block add-button add_field_button">Dodaj</button>
+                    </div>
+                </div>
+
+                <!-- Koraci -->
+                <div class="form-group">
+                    <label for="id_step">Koraci:</label>
+                    <div class="input_fields_wrap_step">
+                        <div>
+                            <textarea type="text" rows="3" class="form-control broj-step" name="step_0" placeholder="1. korak" required></textarea>
+                        </div>               
+                    </div>
+                    <div class="my-2">
+                        <button class="m-auto btn btn-outline-primary btn-block add-button add_field_button_step">Dodaj</button>
+                    </div>
+                </div>
+
+                <!-- Vrijeme i kalorije -->
+                <div class="row m-auto pb-3">
+                    <div class="form-group m-auto">
+                        <label for="id_time">Vrijeme pripreme:</label>
+                        <div class="row m-auto">
+                            <input class="form-control sirina" type="number" min="0" name="time" id="id_time" placeholder="Vrijeme" required>
+                            <p class="mt-1 ml-1">min</p>
+                        </div>
+                    </div>
+                    <div class="form-group m-auto">
+                        <label for="id_calories">Količina kalorija:</label>
+                        <div class="row m-auto">
+                            <input class="form-control sirina" type="number" min="0" name="calories" id="id_calories" placeholder="Kalorije" required>
+                            <p class="mt-1 ml-1">kcal</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Image -->
+                <br>
+                <div class="form-group">
+                    <label for="id_image">Slika:</label>
+                    <input  type="file" name="image" id="id_image" accept="image/*" required>
+                </div>
+
+                <br>
+                <!-- Category -->
+                <div class="form-group">
+                    <select class="form-select form-control" id="inputCategory" name="category" required>
+                        <option selected>Kategorija</option>
+                        <option value="1">Doručak</option>
+                        <option value="2">Hladno predjelo</option>
+                        <option value="3">Toplo predjelo</option>
+                        <option value="4">Glavno jelo</option>
+                        <option value="5">Desert</option>
+                        <option value="6">Salate</option>
+                        <option value="7">Prilozi</option>
+                        <option value="8">Ostalo</option>
+                    </select>
+                </div>
+  
+                <!-- Submit btn -->
+                <div class="form-group mb-3 pt-3">
+                    <button class="m-auto submit-button btn btn-lg btn-outline-primary btn-block" type="submit">Objavi</button>
+                </div>
+                <div class="form-group mb-3">
+						<a href="javascript:window.history.back()" class="m-auto submit-button-cancel btn btn-md btn-outline-danger btn-block">Odustani</a>
+					</div>
+              </form>	
+          </div>
+      </div>
+  </div>
+
+
+{% endblock content %}

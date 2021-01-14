@@ -1,0 +1,283 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+
+<style type="text/css">
+    .card {
+        max-width: 700px;
+    }
+    .container {
+        padding: 20px;
+    }
+    .okvir {
+        border: 1px solid #000;
+    }
+    .checked {
+  color: orange;
+    }
+    .my-btn {
+        background-color: inherit !important;
+        -webkit-text-stroke: 0.5px black;
+        color: white !important;
+        border: 0 !important;
+        padding: 0px;
+
+    }
+    .submit-button{
+        max-width: 200px;
+    }
+    .checked {
+        color: orange !important;
+        -webkit-text-stroke: none;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+
+        <!-- Blog post-->
+        <div class="card m-auto shadow">
+            <img class="card-img-top" src="{{blog_post.image.url}}" alt="">
+            <div class="card-body my-2">
+                <h2 class="card-title">{{blog_post.title}}</h2>
+                <p class="card-text">{{blog_post.body|safe}}</p>
+                <hr>
+                <h6 class="card-title">Sastojci:</h6>
+                <ul>
+                    {% if blog_post.ingredient_0 %}
+                        <li class="card-text">{{blog_post.ingredient_0}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_1 %}
+                        <li class="card-text">{{blog_post.ingredient_1}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_2 %}
+                        <li class="card-text">{{blog_post.ingredient_2}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_3 %}
+                        <li class="card-text">{{blog_post.ingredient_3}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_4 %}
+                        <li class="card-text">{{blog_post.ingredient_4}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_5 %}
+                        <li class="card-text">{{blog_post.ingredient_5}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_6 %}
+                        <li class="card-text">{{blog_post.ingredient_6}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_7 %}
+                        <li class="card-text">{{blog_post.ingredient_7}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_8 %}
+                        <li class="card-text">{{blog_post.ingredient_8}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_9 %}
+                        <li class="card-text">{{blog_post.ingredient_9}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_10 %}
+                        <li class="card-text">{{blog_post.ingredient_10}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_11 %}
+                        <li class="card-text">{{blog_post.ingredient_11}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_12 %}
+                        <li class="card-text">{{blog_post.ingredient_12}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_13 %}
+                        <li class="card-text">{{blog_post.ingredient_13}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_14 %}
+                        <li class="card-text">{{blog_post.ingredient_14}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_15 %}
+                        <li class="card-text">{{blog_post.ingredient_15}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_16 %}
+                        <li class="card-text">{{blog_post.ingredient_16}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_17 %}
+                        <li class="card-text">{{blog_post.ingredient_17}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_18 %}
+                        <li class="card-text">{{blog_post.ingredient_18}}</li>
+                    {% endif %}
+                    {% if blog_post.ingredient_19 %}
+                        <li class="card-text">{{blog_post.ingredient_19}}</li>
+                    {% endif %}
+ 
+                </ul>
+                <hr>
+                <h6 class="card-title">Priprema:</h6>
+                <ul style="list-style: none;">
+                    {% if blog_post.step_0 %}
+                        <h6 class="card-title pt-2">1. Korak</h6>
+                        <li class="card-text">{{blog_post.step_0}}</li>
+                    {% endif %}
+                    {% if blog_post.step_1 %}
+                        <h6 class="card-title pt-2">2. Korak</h6>
+                        <li class="card-text">{{blog_post.step_1}}</li>
+                    {% endif %}
+                    {% if blog_post.step_2 %}
+                        <h6 class="card-title pt-2">3. Korak</h6>
+                        <li class="card-text">{{blog_post.step_2}}</li>
+                    {% endif %}
+                    {% if blog_post.step_3 %}
+                        <h6 class="card-title pt-2">4. Korak</h6>
+                        <li class="card-text">{{blog_post.step_3}}</li>
+                    {% endif %}
+                    {% if blog_post.step_4 %}
+                        <h6 class="card-title pt-2">5. Korak</h6>
+                        <li class="card-text">{{blog_post.step_4}}</li>
+                    {% endif %}
+                    {% if blog_post.step_5 %}
+                        <h6 class="card-title pt-2">6. Korak</h6>
+                        <li class="card-text">{{blog_post.step_5}}</li>
+                    {% endif %}
+                    {% if blog_post.step_6 %}
+                        <h6 class="card-title pt-2">7. Korak</h6>
+                        <li class="card-text">{{blog_post.step_6}}</li>
+                    {% endif %}
+                    {% if blog_post.step_7 %}
+                        <h6 class="card-title pt-2">8. Korak</h6>
+                        <li class="card-text">{{blog_post.step_7}}</li>
+                    {% endif %}
+                    {% if blog_post.step_8 %}
+                        <h6 class="card-title pt-2">9. Korak</h6>
+                        <li class="card-text">{{blog_post.step_8}}</li>
+                    {% endif %}
+                    {% if blog_post.step_9 %}
+                        <h6 class="card-title pt-2">10. Korak</h6>
+                        <li class="card-text">{{blog_post.step_9}}</li>
+                    {% endif %}
+                    {% if blog_post.step_10 %}
+                        <h6 class="card-title pt-2">11. Korak</h6>
+                        <li class="card-text">{{blog_post.step_10}}</li>
+                    {% endif %}
+                    {% if blog_post.step_11 %}
+                        <h6 class="card-title pt-2">12. Korak</h6>
+                        <li class="card-text">{{blog_post.step_11}}</li>
+                    {% endif %}
+                    {% if blog_post.step_12 %}
+                        <h6 class="card-title pt-2">13. Korak</h6>
+                        <li class="card-text">{{blog_post.step_12}}</li>
+                    {% endif %}
+                    {% if blog_post.step_13 %}
+                        <h6 class="card-title pt-2">14. Korak</h6>
+                        <li class="card-text">{{blog_post.step_13}}</li>
+                    {% endif %}
+                    {% if blog_post.step_14 %}
+                        <h6 class="card-title pt-2">15. Korak</h6>
+                        <li class="card-text">{{blog_post.step_14}}</li>
+                    {% endif %}
+                    {% if blog_post.step_15 %}
+                        <h6 class="card-title pt-2">16. Korak</h6>
+                        <li class="card-text">{{blog_post.step_15}}</li>
+                    {% endif %}
+                    {% if blog_post.step_16 %}
+                        <h6 class="card-title pt-2">17. Korak</h6>
+                        <li class="card-text">{{blog_post.step_16}}</li>
+                    {% endif %}
+                    {% if blog_post.step_17 %}
+                        <h6 class="card-title pt-2">18. Korak</h6>
+                        <li class="card-text">{{blog_post.step_17}}</li>
+                    {% endif %}
+                    {% if blog_post.step_18 %}
+                        <h6 class="card-title pt-2">19. Korak</h6>
+                        <li class="card-text">{{blog_post.step_18}}</li>
+                    {% endif %}
+                    {% if blog_post.step_19 %}
+                        <h6 class="card-title pt-2">20. Korak</h6>
+                        <li class="card-text">{{blog_post.step_19}}</li>
+                    {% endif %}
+                </ul>
+                <hr>
+                <h6 class="card-title">Vrijeme pripreme:</h6>
+                <p class="card-text">{{blog_post.time}} min</p>
+                <hr>
+                <h6 class="card-title">Količina kalorija:</h6>
+                <p class="card-text">{{blog_post.calories}} kcal</p>
+                <hr>
+                <h6 class="card-title">Kategorija:</h6>
+                <p class="card-text">{{blog_post.get_category_display}}</p>
+                <hr>
+                <div class="">
+                    <div class="">
+                        <h6 class="card-title p-0">Ocjena:</h6>
+                    </div>
+                <div class="row m-0">    
+                    <form action="{% url 'rate:rate_post' blog_post.slug %}" method="POST" class="rate-form">{% csrf_token %}
+                        <div class="">
+                            <button type="submit" id="first" name="score" value="1" class="fa fa-star fa-2x my-btn"></button>
+                            <button type="submit" id="second" name="score" value="2" class="fa fa-star fa-2x my-btn"></button>
+                            <button type="submit" id="third" name="score" value="3" class="fa fa-star fa-2x my-btn"></button>
+                            <button type="submit" id="fourth" name="score" value="4" class="fa fa-star fa-2x my-btn"></button>
+                            <button type="submit" id="fifth" name="score" value="5" class="fa fa-star fa-2x my-btn"></button>
+                        </div>               
+                    </form>
+                    <p class="pl-2 pt-1" style="font-size: 20px;">{{average}}/5</p>
+                </div>
+                    <p>Ukupno glasova: {{count}}</p>
+                    {% if success_message %}
+                        <i class="fa fa-check fa-3x" style="color:green; text-align: center;"></i>
+                        <h4 class="pb-3" style="color:green; text-align: center;" >{{success_message}}</h4>
+			        {% endif %}
+                    
+                </div>
+                <br>
+                {% if blog_post.author == request.user %}
+                    <a href="{% url 'blog:edit' blog_post.slug %}" class="btn btn-outline-primary"><i class="fa fa-edit"></i>Uredi</a>
+                    <a href="{% url 'blog:delete' blog_post.slug %}" class="btn btn-outline-danger"><i class="fa fa-trash"></i>Izbriši</a>
+                {% endif %}
+            </div>
+            <div class="card-footer text-muted">
+                Objavljeno {{blog_post.date_published}} | Ažurirano {{blog_post.date_updated}} | Autor: {{blog_post.author}}
+
+            </div>
+        </div>
+        <!-- End Blog post-->
+
+    </div>
+    <!--  Komentari -->
+        <br>
+        <div class="card m-auto shadow">
+            <div class="card-body my-2">
+                <h3 class="card-title">Komentari</h3>
+                <br>
+                            {% if not blog_post.comments.all %}
+                                <div class="card m-auto">
+                                    <div class="card-body my-2">
+                                        <p class="card-text">Za ovu objavu još nema komentara...</p>
+                                    </div>
+                                </div>
+                                <br>
+                            {% else %}
+                                {% for comment in blog_post.comments.all %}
+                                    <div class="card m-auto">
+                                        <div class="card-body my-2">
+                                            <h6 class="card-title p-0">{{ comment.author }}</h6>
+                                            <p class="card-text">{{ comment.body }}</p>
+                                        </div>
+                                        <div class="card-footer text-muted">
+                                            Objavljeno {{ comment.date_added }}
+                                        </div>
+                                    </div>
+                                    <br>
+                                {% endfor %}
+                            {% endif %}
+
+                <h5 class="card-title">Dodaj komentar...</h5>
+                <div class="card-body pt-0 mx-0 px-0">
+                    <form method="post" action="{% url 'blog:comment' blog_post.slug %}">{% csrf_token %}
+                        <textarea class="form-control" rows="4" type="text" name="body" id="id_body" placeholder="Unesi komentar..." required></textarea>
+                        <div class="form-group mb-3 pt-3">
+                            <button class="m-auto submit-button btn btn-md btn-outline-primary btn-block" type="submit">Objavi</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+{% endblock content %}

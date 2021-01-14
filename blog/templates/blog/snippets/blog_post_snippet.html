@@ -1,0 +1,51 @@
+<style type="text/css">
+	.card{
+		max-width: 700px;
+		width: 100%;
+	}
+	.card-body{
+		padding: 20px;
+	}
+</style>
+
+{% if blog_post %}
+<div class="container">
+	<div class="row">
+		
+		<!-- Blog Post -->
+		<div class="card shadow m-auto">
+			<a href="{% url 'blog:detail' post.slug %}">
+				<img class="card-img-top" src="{{blog_post.image.url}}">
+			</a>
+			
+			<div class="card-body mt-2 mb-2">
+				<a href="{% url 'blog:detail' post.slug %}">
+					<h2 class="card-title">{{blog_post.title}}</h2>
+				</a>
+				<p class="card-text">{{blog_post.body|truncatechars:180}}</p>
+				{% if blog_post.author == request.user %}
+					<a href="{% url 'blog:edit' blog_post.slug %}" class="btn btn-outline-primary"><i class="fa fa-edit"></i>Uredi</a>
+					<a href="{% url 'blog:delete' blog_post.slug %}" class="btn btn-outline-danger"><i class="fa fa-trash"></i>Izbriši</a>
+				{% endif %}
+			</div>
+			<div class="card-footer text-muted">
+                Objavljeno {{blog_post.date_published}} | Ažurirano {{blog_post.date_updated}} | Autor: {{blog_post.author}}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% else %}
+
+<div class="container">
+	<div class="row">
+		<div class="card m-auto">
+			<div class="card-body mt-2 mb-2">
+				<h2 class="card-title">Nema rezultata.</h2>
+				<p class="card-text">Nije pronađen niti jedan rezultat za: "{{query}}"</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endif %}

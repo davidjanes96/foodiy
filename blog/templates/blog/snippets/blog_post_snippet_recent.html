@@ -1,0 +1,49 @@
+<style type="text/css">
+	.card{
+		max-width: 700px;
+		width: 100%;
+	}
+	.card-body{
+		padding: 20px;
+	}
+</style>
+
+{% if blog_post %}
+		
+		<!-- Blog Post -->
+		<div class="card-horizontal">
+			<a href="{% url 'blog:detail' post.slug %}">
+				<img class="img-fluid img-fluid-extra" width="300px" src="{{blog_post.image.url}}">
+			</a>
+		<div class="card-body p-1 pl-2" style=" 
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;">
+			<a href="{% url 'blog:detail' post.slug %}">
+				<h5 class="card-title">{{blog_post.title}}</h5>
+			</a>
+			<p class="card-text">{{blog_post.body}}<p>
+		</div>
+		
+		
+	</div>
+	<div class="card-footer pb-0 text-muted">
+		<div class="row m-auto">
+			<p class="col">Autor: {{blog_post.author}}</p>
+		</div>
+		
+	</div>
+
+{% else %}
+
+
+		<div class="card m-auto">
+			<div class="card-body mt-2 mb-2">
+				<h4 class="card-title">Nema rezultata.</h4>
+				<p class="card-text" style="font-size: 14px;">Nije pronađena niti jedana objava.</p>
+			</div>
+		</div>
+
+
+{% endif %}
