@@ -34,6 +34,7 @@ from account.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_screen_view, name="home"),
+    path('feedback/', include('feedback.urls', 'feedback')),
     path('blog/', include('blog.urls', 'blog')),
     path('rate/', include('rating.urls', 'rate')),
     path('register/', registration_view, name="register"),

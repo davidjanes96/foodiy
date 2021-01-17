@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'account', 
     'blog',
     'rating',
+    'feedback',
     
     'django.contrib.admin',
     'django.contrib.auth',

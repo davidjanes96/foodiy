@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<style type="text/css">
+    .create-form {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+        margin: auto;
+    }
+  
+    .submit-button{
+        max-width: 200px;
+    }
+    .submit-button-cancel{
+        max-width: 100px;
+    }
+    .add-button{
+        max-width: 100px;
+    }
+    .okvir {
+        border: 1px solid #000;
+    }
+    .sirina {
+        max-width: 150px;
+    }
+</style>
+  
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-lg-8 offset-lg-2 card mb-3 shadow">
+            <h1 class="h3 mb-3 font-weight-normal text-center mt-3">Ocijeni aplikaciju</h1>
+
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="text-center">
+                        <i class="fa fa-check fa-3x" style="color:green;"></i>
+                    </div>
+                        <h4 class="pb-3" style="color:green; text-align: center;" >{{message}}</h4>
+                        <p class="text-center pb-3"><a href="{% url 'home' %}">Povratak na naslovnicu.</a></p>
+                    {% endfor %}
+                {% endif %}	
+                	
+          </div>
+      </div>
+  </div>
+
+
+{% endblock content %}

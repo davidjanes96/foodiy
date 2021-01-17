@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<style type="text/css">
+    .create-form {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+        margin: auto;
+    }
+  
+    .submit-button{
+        max-width: 200px;
+    }
+    .submit-button-cancel{
+        max-width: 100px;
+    }
+    .add-button{
+        max-width: 100px;
+    }
+    .okvir {
+        border: 1px solid #000;
+    }
+    .sirina {
+        max-width: 150px;
+    }
+</style>
+  
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-lg-8 offset-lg-2 card mb-3 shadow">
+            <form class="create-form" method="post">{% csrf_token %}
+                    <h1 class="h3 mb-3 font-weight-normal text-center mt-3">Ocijeni aplikaciju</h1>
+                
+                <!-- Rating -->
+                <div class="form-group">
+                    <select class="form-select form-control" id="inputRating" name="rating" required>
+                        <option selected>Ocjena</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <!-- Comment -->
+                <div class="form-group">
+                    <label for="id_body">Komentar:</label>
+                    <textarea class="form-control" rows="4" type="text" name="comment" id="id_comment" placeholder="Unesi komentar..." required></textarea>
+                </div>
+  
+                <!-- Submit btn -->
+                <div class="form-group mb-3 pt-3">
+                    <button class="m-auto submit-button btn btn-lg btn-outline-primary btn-block" type="submit">Pošalji</button>
+                </div>
+                <div class="form-group mb-3">
+						<a href="javascript:window.history.back()" class="m-auto submit-button-cancel btn btn-md btn-outline-danger btn-block">Odustani</a>
+					</div>
+              </form>	
+          </div>
+      </div>
+  </div>
+
+
+{% endblock content %}
