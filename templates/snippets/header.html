@@ -147,7 +147,7 @@
         if(x < max_fields){ //max input box allowed
 	
 		     //text box increment
-            $(wrapper).append('<div><input type="text" class="form-control broj" placeholder="Sastojak..." name="ingredient_' + t + '"/><a href="#" class="remove_field">Izbriši</a></div>'); //add input box
+            $(wrapper).append('<div><input type="text" class="form-control broj" maxlength="90" placeholder="Sastojak..." name="ingredient_' + t + '"/><a href="#" class="remove_field">Izbriši</a></div>'); //add input box
             x++;
             t++; 
 	  }
@@ -182,7 +182,7 @@
         if(x < max_fields){ //max input box allowed
 	
 		     //text box increment
-            $(wrapper).append('<div><textarea type="text" rows="3" class="form-control broj-step" placeholder="' + s + '. korak" name="step_' + t + '"></textarea><a href="#" class="remove_field">Izbriši</a></div>'); //add input box
+            $(wrapper).append('<div><textarea type="text" rows="3" class="form-control broj-step" maxlength="499" placeholder="' + s + '. korak" name="step_' + t + '"></textarea><a href="#" class="remove_field">Izbriši</a></div>'); //add input box
             x++;
             t++;
             s++; 

@@ -74,13 +74,13 @@
 				<!-- title -->
 				<div class="form-group">
 					<label for="id_title">Naziv:</label>
-					<input class="form-control" type="text" name="title" id="id_title" placeholder="Unesi naziv" value="{{form.initial.title}}" required autofocus>
+					<input class="form-control" type="text" name="title" id="id_title" maxlength="49" placeholder="Unesi naziv" value="{{form.initial.title}}" required autofocus>
 				</div>
 
 				<!-- Body -->
 				<div class="form-group">
 					<label for="id_body">Opis:</label>
-					<textarea class="form-control" rows="4" type="text" name="body" id="id_body" placeholder="Ovdje unesi opis recepta..." 
+					<textarea class="form-control" rows="4" type="text" name="body" id="id_body" maxlength="499" placeholder="Ovdje unesi opis recepta..." 
 					required>{{form.initial.body}}</textarea>
                 </div>
 
@@ -89,119 +89,119 @@
                     <label for="id_ingredient">Sastojci:</label>	
                     <div class="input_fields_wrap">
                         <div>
-                            <input type="text" class="form-control broj" name="ingredient_0" value="{{form.initial.ingredient_0}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_0" value="{{form.initial.ingredient_0}}">
                         </div>
 						{% if form.initial.ingredient_1 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_1" value="{{form.initial.ingredient_1}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_1" value="{{form.initial.ingredient_1}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_2 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_2" value="{{form.initial.ingredient_2}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_2" value="{{form.initial.ingredient_2}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_3 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_3" value="{{form.initial.ingredient_3}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_3" value="{{form.initial.ingredient_3}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_4 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_4" value="{{form.initial.ingredient_4}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_4" value="{{form.initial.ingredient_4}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_5 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_5" value="{{form.initial.ingredient_5}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_5" value="{{form.initial.ingredient_5}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_6 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_6" value="{{form.initial.ingredient_6}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_6" value="{{form.initial.ingredient_6}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_7 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_7" value="{{form.initial.ingredient_7}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_7" value="{{form.initial.ingredient_7}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_8 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_8" value="{{form.initial.ingredient_8}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_8" value="{{form.initial.ingredient_8}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_9 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_9" value="{{form.initial.ingredient_9}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_9" value="{{form.initial.ingredient_9}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_10 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_10" value="{{form.initial.ingredient_10}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_10" value="{{form.initial.ingredient_10}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_11 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_11" value="{{form.initial.ingredient_11}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_11" value="{{form.initial.ingredient_11}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_12 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_12" value="{{form.initial.ingredient_12}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_12" value="{{form.initial.ingredient_12}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_13 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_13" value="{{form.initial.ingredient_13}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_13" value="{{form.initial.ingredient_13}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_14 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_14" value="{{form.initial.ingredient_14}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_14" value="{{form.initial.ingredient_14}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_15 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_15" value="{{form.initial.ingredient_15}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_15" value="{{form.initial.ingredient_15}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_16 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_16" value="{{form.initial.ingredient_16}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_16" value="{{form.initial.ingredient_16}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_17 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_17" value="{{form.initial.ingredient_17}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_17" value="{{form.initial.ingredient_17}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_18 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_18" value="{{form.initial.ingredient_18}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_18" value="{{form.initial.ingredient_18}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.ingredient_19 %}
 						<div>
-                            <input type="text" class="form-control broj" name="ingredient_19" value="{{form.initial.ingredient_19}}">
+                            <input type="text" class="form-control broj" maxlength="90" name="ingredient_19" value="{{form.initial.ingredient_19}}">
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
@@ -217,119 +217,119 @@
                     <label for="id_step">Koraci:</label>	
                     <div class="input_fields_wrap_step">
                         <div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_0">{{form.initial.step_0}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_0">{{form.initial.step_0}}</textarea>
                         </div>
 						{% if form.initial.step_1 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_1">{{form.initial.step_1}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_1">{{form.initial.step_1}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_2 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_2">{{form.initial.step_2}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_2">{{form.initial.step_2}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_3 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_3">{{form.initial.step_3}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_3">{{form.initial.step_3}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_4 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_4">{{form.initial.step_4}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_4">{{form.initial.step_4}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_5 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_5">{{form.initial.step_5}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_5">{{form.initial.step_5}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_6 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_6">{{form.initial.step_6}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_6">{{form.initial.step_6}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_7 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_7">{{form.initial.step_7}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_7">{{form.initial.step_7}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_8 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_8">{{form.initial.step_8}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_8">{{form.initial.step_8}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_9 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_9">{{form.initial.step_9}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_9">{{form.initial.step_9}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_10 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_10">{{form.initial.step_10}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_10">{{form.initial.step_10}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_11 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_11">{{form.initial.step_11}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_11">{{form.initial.step_11}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_12 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_12">{{form.initial.step_12}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_12">{{form.initial.step_12}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_13 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_13">{{form.initial.step_13}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_13">{{form.initial.step_13}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_14 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_14">{{form.initial.step_14}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_14">{{form.initial.step_14}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_15 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_15">{{form.initial.step_15}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_15">{{form.initial.step_15}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_16 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_16">{{form.initial.step_16}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_16">{{form.initial.step_16}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_17 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_17">{{form.initial.step_17}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_17">{{form.initial.step_17}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_18 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_18">{{form.initial.step_18}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_18">{{form.initial.step_18}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}
 						{% if form.initial.step_19 %}
 						<div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_19">{{form.initial.step_19}}</textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" maxlength="499" name="step_19">{{form.initial.step_19}}</textarea>
 							<a href="#" class="remove_field">Izbriši</a>
                         </div>
 						{% endif %}

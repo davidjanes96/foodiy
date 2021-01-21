@@ -35,13 +35,13 @@
                 <!-- title -->
                 <div class="form-group">
                     <label for="id_title">Naziv:</label>
-                    <input class="form-control" type="text" name="title" id="id_title" placeholder="Unesi naziv" required autofocus>
+                    <input class="form-control" type="text" name="title" id="id_title" maxlength="49" placeholder="Unesi naziv" required autofocus>
                 </div>
   
                 <!-- Body -->
                 <div class="form-group">
                     <label for="id_body">Opis:</label>
-                    <textarea class="form-control" rows="4" type="text" name="body" id="id_body" placeholder="Ovdje unesi opis recepta..." required></textarea>
+                    <textarea class="form-control" rows="4" type="text" name="body" id="id_body" maxlength="499" placeholder="Ovdje unesi opis recepta..." required></textarea>
                 </div>
                 
                 <!-- Sastojci -->
@@ -49,7 +49,7 @@
                     <label for="id_ingredient">Sastojci:</label>
                     <div class="input_fields_wrap">
                         <div>
-                            <input type="text" class="form-control broj" name="ingredient_0" placeholder="Sastojak..." required>
+                            <input type="text" class="form-control broj" name="ingredient_0" maxlength="90" placeholder="Sastojak..." required>
                         </div>               
                     </div>
                     <div class="mt-2">
@@ -62,7 +62,7 @@
                     <label for="id_step">Koraci:</label>
                     <div class="input_fields_wrap_step">
                         <div>
-                            <textarea type="text" rows="3" class="form-control broj-step" name="step_0" placeholder="1. korak" required></textarea>
+                            <textarea type="text" rows="3" class="form-control broj-step" name="step_0" maxlength="499" placeholder="1. korak" required></textarea>
                         </div>               
                     </div>
                     <div class="my-2">
