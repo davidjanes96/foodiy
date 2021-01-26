@@ -1,7 +1,10 @@
 <style>
-    .page-link {
-        background-color: orange !important;
-        border-color: orange !important;
+    .page-link:active, .page-link:focus {
+        border-color: rgba(255, 166, 0, 0.70);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0), 0 0 4px rgb(255, 166, 0) !important;
+    }
+    .page-link:hover {
+        background-color: rgb(253, 246, 230);
     }
 
 </style>
@@ -12,24 +15,29 @@
     <ul class="pagination pg-grey justify-content-center">
         {% if blog_posts.has_previous %}
             <li class="page-item">
-              <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.previous_page_number }}">&laquo; Prethodna</a>
+              <a class="page-link" style="color: orange;" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.previous_page_number }}">&laquo; Prethodna</a>
             </li>
         {% endif %}
     
         {% for i in blog_posts.paginator.page_range %}
             {% if blog_posts.number == i %}
-                <li class="page-item active"><a class="page-link">{{ i }}</a></li>
+                <li class="page-item active"><a class="page-link" style="
+                color: white; 
+                background-color: orange; 
+                border-color: orange;
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0), 0 0 4px rgb(255, 166, 0) !important;
+                ">{{ i }}</a></li>
             {% else %}
-                <li class="page-item" ><a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ i }}">{{ i }}</a></li>
+                <li class="page-item" ><a class="page-link" style="color: orange;" href="?{% if query %}q={{query}}&{% endif %}page={{ i }}">{{ i }}</a></li>
             {% endif %}
         {% endfor %}
         
         {% if blog_posts.has_next %}
             <li class="page-item">
-              <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.next_page_number }}">Slijedeća</a>
+              <a class="page-link" style="color: orange;" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.next_page_number }}">Slijedeća</a>
             </li>
             <li class="page-item">
-              <a class="page-link"  href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.paginator.num_pages }}">Zadnja &raquo;</a>
+              <a class="page-link" style="color: orange;" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.paginator.num_pages }}">Zadnja &raquo;</a>
             </li>
         {% endif %}
     </ul>
