@@ -29,9 +29,14 @@
 		
 	</div>
 	<div class="card-footer pb-0 text-muted">
-		<div class="row m-auto">
-			<p class="col">Autor: {{blog_post.author}}</p>
-		</div>
+		<div class="row">
+			<div class="col-6">
+				<p>Autor: {{blog_post.author}}</p>
+			</div>
+			<div class="col-6">
+				<p class="float-right">{{blog_post.date_published|date:'d. m. y. H:i'}}</p>
+			</div>
+		</div>	
 		
 	</div>
 

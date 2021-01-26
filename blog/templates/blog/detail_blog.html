@@ -14,7 +14,7 @@
         border: 1px solid #000;
     }
     .checked {
-  color: orange;
+        color: orange;
     }
     .my-btn {
         background-color: inherit !important;
@@ -31,6 +31,30 @@
         color: orange !important;
         -webkit-text-stroke: none;
     }
+    .srce-no {
+        color:rgb(255, 50, 50);
+        transition: 0.3s;
+    }
+    .srce-no:hover {
+        color:red;
+        transition: 0.3s;
+    }
+    .fa-heart-o:hover {
+        text-shadow: 0px 1px 4px rgba(255, 0, 0, 0.75);
+        transition: 0.3s;
+    }
+    .fa-heart:hover {
+        text-shadow: 0px 1px 4px rgba(255, 0, 0, 0.75);
+        transition: 0.3s;
+    }
+    .fa-heart:active {
+        color:rgb(180, 0, 0);
+        text-shadow: 0px 1px 4px rgb(180, 0, 0);
+    }
+    .fa-heart-o:active {
+        color:rgb(180, 0, 0);
+        text-shadow: 0px 1px 4px rgb(180, 0, 0);
+    }
 </style>
 
 <div class="container">
@@ -40,7 +64,29 @@
         <div class="card m-auto shadow">
             <img class="card-img-top" src="{{blog_post.image.url}}" alt="">
             <div class="card-body my-2">
-                <h2 class="card-title">{{blog_post.title}}</h2>
+
+                <div class="row">
+                    <div class="col-11">
+                        <h2 class="card-title">{{blog_post.title}}</h2>
+                    </div>   
+
+                    {% if is_favorite %}
+                    <div class="col-1">
+                        <a href="{% url 'blog:favorite' slug=blog_post.slug %}" class="srce-no float-right" data-toggle="tooltip" data-placement="bottom" title="Ukloni iz favorita">
+                            <p class="pt-2 mb-1"><i class="fa fa-heart fa-2x fa-lg"></i></p>
+                        </a>
+                    </div>
+                    {% else %}
+                    <div class="col-1">
+                        <a href="{% url 'blog:favorite' slug=blog_post.slug %}" class="srce-no float-right" data-toggle="tooltip" data-placement="bottom" title="Dodaj u favorite">
+                            <p class="pt-2 mb-1"><i class="fa fa-heart-o fa-2x fa-lg"></i></p>
+                        </a>
+                    </div>
+                    {% endif %}
+
+                    </div>
+                
+
                 <p class="card-text">{{blog_post.body|safe}}</p>
                 <hr>
                 <h6 class="card-title">Sastojci:</h6>
@@ -279,5 +325,11 @@
         </div>
 
 </div>
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
 
 {% endblock content %}

@@ -39,6 +39,11 @@
         width: 100%;
         margin: auto;
     }
+    .favorite-posts {
+        max-width: 500px;
+        width: 100%;
+        margin: auto;
+    }
     .okvir{
         border: 1px solid #000000;
     }
@@ -83,7 +88,7 @@
 <div class="container mt-4 p-4">
     <div class="row">
         <div class="blog-posts">
-            <h3 class="mb-3 font-weight-normal">Objave:</h3>
+            <h3 class="mb-3 font-weight-normal">Moje objave:</h3>
             {% if blog_posts %}
                 <ul>
                 {% for post in blog_posts %}
@@ -94,6 +99,23 @@
                 </ul>
             {% else %}
             <p>Trenutno nemate niti jednu objavu. Stvori objavu <a href="{% url 'blog:create' %}">ovdje</a>.</p>
+
+            {% endif %}
+        </div>
+
+        <div class="favorite-posts">
+            <h3 class="mb-3 font-weight-normal">Moji favoriti:</h3>
+            {% if favorite_posts %}
+                <ul>
+                {% for post in favorite_posts %}
+                    <a href="{% url 'blog:detail' post.slug %}" style="text-decoration: none;">
+                        <li class="list-group-item">{{post}}</li>
+                        <span><a href="{% url 'favorite_remove' slug=post.slug %}">Ukloni</a></span>
+                    </a>
+                {% endfor %}
+                </ul>
+            {% else %}
+            <p>Trenutno nemate niti jednu objavu u favoritima.</p>
 
             {% endif %}
         </div>

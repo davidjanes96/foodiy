@@ -1,3 +1,4 @@
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q, Avg, Count
 from blog.models import BlogPost
@@ -52,7 +53,11 @@ def detail_blog_view(request, slug):
 
     blog_post = get_object_or_404(BlogPost, slug=slug)
     ratings = Rating.objects.filter(post=blog_post).order_by("score")
-    
+
+    is_favorite = False
+    if blog_post.favorite.filter(id=request.user.id).exists():
+        is_favorite = True
+
     average = ratings.aggregate(Avg("score"))["score__avg"]
     if average == None:
         average = 0
@@ -66,6 +71,7 @@ def detail_blog_view(request, slug):
     context['category'] = blog_post.get_category_display()
     context['average'] = average
     context['count'] = count
+    context['is_favorite'] = is_favorite
 
     return render(request, 'blog/detail_blog.html', context)
 
@@ -155,6 +161,19 @@ def delete_blog_view_confirm(request, slug):
     blog_post = get_object_or_404(BlogPost, slug=slug)
     blog_post.delete()
     return render(request, 'blog/delete_blog_confirm.html')
+
+def favorite_blog_view(request, slug):
+    blog_post = get_object_or_404(BlogPost, slug=slug)
+    
+    user = request.user
+    if not user.is_authenticated:
+        return redirect("must_authenticate")
+
+    if blog_post.favorite.filter(id=user.id).exists():
+        blog_post.favorite.remove(user)
+    else:
+        blog_post.favorite.add(user)
+    return HttpResponseRedirect(blog_post.get_absolute_url())
 
 def get_blog_queryset(query=None):
     queryset = []

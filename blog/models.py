@@ -36,7 +36,8 @@ class BlogPost(models.Model):
     category        = models.IntegerField(verbose_name="Kategorija", choices=CATEGORY_CHOICES, default=0)
     slug            = models.SlugField(blank=True, unique=True)
     time            = models.IntegerField(null=True, blank=True)
-    calories        = models.IntegerField(null=True, blank=True)    
+    calories        = models.IntegerField(null=True, blank=True)
+    favorite        = models.ManyToManyField("account.Account", related_name="favorite", blank=True) 
 
     ingredient_0    = models.CharField(max_length=100, null=True, blank=True)
     ingredient_1    = models.CharField(max_length=100, null=True, blank=True)
@@ -88,6 +89,8 @@ class BlogPost(models.Model):
         average = ratings.aggregate(Avg("score"))["score__avg"]
         return average
 
+    def get_absolute_url(self):
+        return "/blog/%s/" % self.slug
 
 
 

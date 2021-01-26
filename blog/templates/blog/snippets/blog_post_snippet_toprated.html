@@ -40,11 +40,14 @@
 			
 		</div>
 		<div class="card-footer pb-0 text-muted">
-			<div class="row m-auto">
-				<p class="col">Autor: {{blog_post.author}}</p>
-				<p class="col"><i class="fa fa-star checked"></i> {{blog_post.get_average}}/5</p>
-			</div>
-			
+			<div class="row">
+				<div class="col-7">
+					<p>Autor: {{blog_post.author}}</p>
+				</div>
+				<div class="col-5">
+					<p class="float-right"><i class="fa fa-star checked"></i> {{blog_post.get_average}}/5</p>
+				</div>
+			</div>	
 		</div>
 
 {% else %}

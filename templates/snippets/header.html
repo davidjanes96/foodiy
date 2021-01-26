@@ -112,16 +112,18 @@
                 </form>
             </div>
             {% if request.user.is_authenticated %}
-            <nav class="my-2 my-md-0 mr-3">
-                <a class="text-dark" href="{% url 'account' %}">Korisnički račun</a>
-            </nav>
-            <a class="btn btn-outline-primary mr-3" href="{% url 'feedback:feedback' %}">Ocijeni Aplikaciju</a>
-            <a class="btn btn-outline-primary" href="{% url 'logout' %}">Odjava</a>
+                <nav class="my-2 my-md-0 mr-3">
+                    <a class="text-dark" href="{% url 'account' %}">Korisnički račun</a>
+                </nav>
+                <nav class="my-2 my-md-0 mr-3">
+                    <a class="btn btn-outline-primary" href="{% url 'feedback:feedback' %}">Ocijeni Aplikaciju</a>
+                </nav>
+                <a class="btn btn-outline-primary" href="{% url 'logout' %}">Odjava</a>
             {% else %}
-            <nav class="my-2 my-md-0 mr-3">
-                <a class="p-2 text-dark" href="{% url 'register' %}">Registracija</a>
-            </nav>
-            <a class="btn btn-outline-primary" href="{% url 'login' %}">Prijava</a>   
+                <nav class="my-2 my-md-0 mr-3">
+                    <a class="p-2 text-dark" href="{% url 'register' %}">Registracija</a>
+                </nav>
+                <a class="btn btn-outline-primary" href="{% url 'login' %}">Prijava</a>   
             {% endif %}
 
             </div>

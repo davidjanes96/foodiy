@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from account.forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm
 from blog.models import BlogPost
@@ -78,13 +78,31 @@ def account_view(request):
     context['account_form'] = form
 
     blog_posts = BlogPost.objects.filter(author=request.user)
+    favorite_posts = request.user.favorite.all()
+    
     context['blog_posts'] = blog_posts
+    context['favorite_posts'] = favorite_posts
 
     return render(request, 'account/account.html', context)
 
 
 def must_authenticate_view(request):
     return render(request, 'account/must_authenticate.html', {})
+
+def favorite_blog_view_remove(request, slug):
+    blog_post = get_object_or_404(BlogPost, slug=slug)
+    
+    user = request.user
+    if not user.is_authenticated:
+        return redirect("must_authenticate")
+
+    if blog_post.favorite.filter(id=user.id).exists():
+        blog_post.favorite.remove(user)
+    else:
+        blog_post.favorite.add(user)
+    
+    return redirect(request.META['HTTP_REFERER'])
+
      
 
 
