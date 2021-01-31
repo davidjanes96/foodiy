@@ -1,0 +1,231 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+
+<style type="text/css">
+    .sticky-offset{
+        top: 100px;
+    }
+    .okvir{
+        border: 1px solid #000000;
+    }
+    @media (max-width: 768px) { 
+		.right-column{
+			margin-left: 0px;
+		}
+	}
+
+	@media (min-width: 768px) { 
+		.right-column{
+			margin-left: 0px;
+		}
+	}
+
+	.blog-post-container{
+		margin-bottom: 20px;
+		width: 100%;
+	}
+	.create-post-bar{
+		background-color: #fff;
+		margin-bottom:20px;
+	}
+
+	.left-column{
+        padding-left: 0px;
+	}
+
+	.right-column{
+		padding-right:0px;
+	}
+	.lead{
+		font-size: 17px;
+	}
+    .container-xl {
+        width: 1460px;
+        max-width: 100%;
+    }
+    .okvir {
+        border: 1px solid #000;
+        
+    }
+    .carousel-control-prev-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23FFE045' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+        background-size: 60%;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: lightgrey;
+        border: 1px solid rgb(155, 155, 155);
+    }
+
+    .carousel-control-next-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23FFE045' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+        background-size: 60%;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: lightgrey;
+        border: 1px solid rgb(155, 155, 155);
+    }
+    .textshadow {
+     text-shadow: 2px 2px 0px #000000; /* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+}
+</style>
+
+<div class="container-xl">
+    <div class="row">
+        <!-- Extras (Left side) -->
+            <div class="left-column col-lg-3 d-lg-flex d-none flex-column">
+                <div class="card shadow create-post-bar d-flex felx-column p-3 sticky-top sticky-offset">
+
+                    <h5 class="card-title m-auto pb-3">Najbolje ste ocijenili:</h5>
+                    {% if top_rated_blog %}
+                        
+                            <div class="card shadow">
+                            {% include 'blog/snippets/blog_post_snippet_toprated.html' with blog_post=top_rated_blog %}
+                            </div>
+ 
+
+                    {% else %}
+                        <div class="blog-post-container">
+                            {% include 'blog/snippets/blog_post_snippet_toprated.html' with query=query %}
+                        </div>                 
+                    {% endif %}
+
+                    <br>
+                    <h5 class="card-title m-auto pb-3">Najnovija objava:</h5>
+                    {% if blog_posts_recent %}
+                        {% for post in blog_posts_recent %}
+                            <div class="card shadow">
+                            {% include 'blog/snippets/blog_post_snippet_recent.html' with blog_post=post %}
+                            </div>
+                    {% endfor %}
+
+                    {% else %}
+                        <div class="blog-post-container">
+                            {% include 'blog/snippets/blog_post_snippet_recent.html' with query=query %}
+                        </div>                 
+                    {% endif %}
+
+                    <br>
+
+                </div>
+            </div>
+        <!-- End Extras (Left side) -->
+
+        <!-- Blog Feed -->
+        <div class="col-lg-6 pt-4">
+            <!-- Posts Feed -->
+            <div class="card shadow m-auto p-3">
+                {% if cats == '1' %}
+                <h4 class="card-title pt-2">Kategorija: Doručak</h4>
+                {% elif cats == '2' %}
+                <h4 class="card-title pt-2">Kategorija: Hladno predjelo</h4>
+                {% elif cats == '3' %}
+                <h4 class="card-title pt-2">Kategorija: Toplo predjelo</h4>
+                {% elif cats == '4' %}
+                <h4 class="card-title pt-2">Kategorija: Glavno jelo</h4>
+                {% elif cats == '5' %}
+                <h4 class="card-title pt-2">Kategorija: Desert</h4>
+                {% elif cats == '6' %}
+                <h4 class="card-title pt-2">Kategorija: Salate</h4>
+                {% elif cats == '7' %}
+                <h4 class="card-title pt-2">Kategorija: Prilozi</h4>
+                {% elif cats == '8' %}
+                <h4 class="card-title pt-2">Kategorija: Ostalo</h4>
+                {% endif %}
+
+                <hr class="mt-2">
+
+                {% if category_posts %}
+                {% for post in category_posts %}
+                        <div class="blog-post-container pt-2">
+                            {% include 'blog/snippets/blog_post_category_snippet.html' with blog_post=post %}
+                        </div>
+                {% endfor %}
+
+            {% else %}
+                <div class="blog-post-container">
+                    {% include 'blog/snippets/blog_post_category_snippet.html' with query=query %}
+                </div>                 
+            {% endif %}
+            <!-- End Posts Feed -->
+
+            </div>
+            <br><br><br>
+            <!-- Pagination -->
+            {% include 'blog/snippets/blog_post_pagination.html' with blog_posts=category_posts %}
+
+            <!-- Extras Bar -->
+            <div class="d-lg-none">
+				<div class="card shadow m-auto d-flex flex-column p-3">		
+                    <h6 class="card-title m-auto pb-3">Najbolje ste ocijenili:</h6>
+                    {% if top_rated_blog %}
+                        
+                            <div class="card shadow">
+                            {% include 'blog/snippets/blog_post_snippet_toprated.html' with blog_post=top_rated_blog %}
+                            </div>
+ 
+
+                    {% else %}
+                        <div class="blog-post-container">
+                            {% include 'blog/snippets/blog_post_snippet_toprated.html' with query=query %}
+                        </div>                 
+                    {% endif %}
+                    
+                    <br>
+					<h6 class="card-title m-auto pb-3">Najnovija objava:</h6>
+                    {% if blog_posts_recent %}
+                        {% for post in blog_posts_recent %}
+                            <div class="card shadow">
+                            {% include 'blog/snippets/blog_post_snippet_recent.html' with blog_post=post %}
+                            </div>
+                    {% endfor %}
+
+                    {% else %}
+                        <div class="blog-post-container">
+                            {% include 'blog/snippets/blog_post_snippet_recent.html' with query=query %}
+                        </div>                 
+                    {% endif %}
+                    <br>
+				</div>
+			</div>
+            <!-- End Extras Bar-->
+
+            <!-- Create Post Bar -->
+            <div class="d-lg-none my-3">
+				<div class="card shadow m-auto d-flex flex-column p-3">
+                    <h5 class="m-auto pb-3">
+                        {% if request.user.is_authenticated %}
+                            <p class="card-text">Pozdrav, {{request.user.username}}</p>
+                        {% endif %}
+                    </h5>
+                    <a href="{% url 'home' %}" class="pt-0 m-auto"><embed style="pointer-events: none;" src="{% static 'lonac.svg' %}" alt="lonac.svg" width="192px" height="80px"></a>
+                    <p class="m-auto pb-3 pl-4 pr-4 pt-2 text-justify">Ukoliko znate neki recept za jaaako ukusno jelo te zelite jos nekome dati priliku za eksperimentiranje sa razlicitim namirnicama i okrivanje novih okusa, ucinite to ovdje.</p>	
+                    <p class="m-auto pb-3 pl-4 pr-4 text-justify">Nadahnite druge zanimljivim idejama i prijedlozima za pecenje i kuhanje!</p>		
+					<p class="m-auto pb-3 pt-2"><a class="btn btn-outline-primary" href="{% url 'blog:create' %}">Objavi</a>
+				</div>
+			</div>
+            <!-- End Create Post Bar -->
+        
+        </div>
+        <!-- Create Post (Right side) -->
+        <div class="right-column col-lg-3 d-lg-flex d-none flex-column">
+            <div class="card shadow create-post-bar d-flex felx-column p-3 sticky-top sticky-offset">
+                <h5 class="m-auto pb-3 pt-2 card-title">
+                    {% if request.user.is_authenticated %}
+                        Pozdrav, {{request.user.username}}
+                    {% endif %}
+                </h5>
+                <a href="{% url 'home' %}" class="pt-0 m-auto"><embed style="pointer-events: none;" src="{% static 'lonac.svg' %}" alt="lonac.svg" width="192px" height="80px"></a>
+                <p class="m-auto pb-3 pl-4 pr-4 pt-2 card-text text-justify">Ukoliko znate neki recept za jaaako ukusno jelo te želite još nekome dati priliku za eksperimentiranje s različitim namirnicama i otkrivanje novih okusa, učinite to ovdje.</p>
+                <p class="m-auto pb-3 pl-4 pr-4 card-text text-justify">Nadahnite druge zanimljivim idejama i prijedlozima za pečenje i kuhanje!</p>
+                <p class="m-auto pb-3 pt-2"><a class="btn btn-outline-primary" href="{% url 'blog:create' %}">Objavi</a>
+            </div>
+        </div>
+        <!-- End Create Post (Right side) -->
+    </div>
+</div>
+
+{% endblock content %}

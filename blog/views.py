@@ -41,6 +41,7 @@ def create_blog_view(request):
         obj.author = author
         obj.save()
         form = CreateBlogPostForm()
+        return redirect("home")
 
     context['form'] = form
 
@@ -176,12 +177,31 @@ def favorite_blog_view(request, slug):
     return HttpResponseRedirect(blog_post.get_absolute_url())
 
 def get_blog_queryset(query=None):
+
     queryset = []
     queries = query.split(" ")
     for q in queries:
+        if q == 'Doručak' or q == 'Dorucak' or q == 'doručak' or q == 'dorucak':
+            q=1
+        if q == 'Hladno Predjelo' or q == 'Hladno predjelo' or q == 'hladno predjelo' or q == 'hladnopredjelo' or q == 'hladno' or q == 'predjelo':
+            q=2
+        if q == 'Toplo Predjelo' or q == 'Toplo predjelo' or q == 'toplo predjelo' or q == 'toplopredjelo' or q == 'toplo' or q == 'predjelo':
+            q=3
+        if q == 'Glavno Jelo' or q == 'Glavno jelo' or q == 'glavno jelo' or q == 'glavnojelo' or q == 'glavno' or q == 'jelo':
+            q=4
+        if q == 'Desert' or q == 'desert' or q == 'deserti' or q == 'Deserti':
+            q=5
+        if q == 'Salata' or q == 'Salate' or q == 'salata' or q == 'salate':
+            q=6
+        if q == 'Prilog' or q == 'prilog' or q == 'Prilozi' or q == 'prilozi':
+            q=7
+        if q == 'Ostalo' or q == 'ostalo':
+            q=8
+
         posts = BlogPost.objects.filter(
             Q(title__icontains=q) | 
-            Q(body__icontains=q)
+            Q(body__icontains=q) |
+            Q(category__icontains=q)
         ).distinct()
 
         for post in posts:

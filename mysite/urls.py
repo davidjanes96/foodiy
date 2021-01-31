@@ -21,6 +21,8 @@ from django.conf.urls.static import static
 
 from personal.views import(
     home_screen_view,
+    categories_screen_view,
+    category_view,
 )
 
 from account.views import (
@@ -35,6 +37,8 @@ from account.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_screen_view, name="home"),
+    path('categories/', categories_screen_view, name="categories"),
+    path('category/<str:cats>', category_view, name="category"),
     path('feedback/', include('feedback.urls', 'feedback')),
     path('blog/', include('blog.urls', 'blog')),
     path('rate/', include('rating.urls', 'rate')),

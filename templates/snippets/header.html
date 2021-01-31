@@ -101,6 +101,9 @@
                 <li class="nav-item active">
                     <a class="px-3 py-3 text-dark border-left border-right nav-bar" href="{% url 'home' %}">Naslovnica</a>
                 </li>
+                <li class="nav-item active">
+                    <a class="px-3 py-3 text-dark border-left border-right nav-bar" href="{% url 'categories' %}">Kategorije</a>
+                </li>
 
             </ul>
             <div class="m-lg-auto search-bar">
@@ -149,7 +152,7 @@
         if(x < max_fields){ //max input box allowed
 	
 		     //text box increment
-            $(wrapper).append('<div><input type="text" class="form-control broj" maxlength="90" placeholder="Sastojak..." name="ingredient_' + t + '"/><a href="#" class="remove_field">Izbriši</a></div>'); //add input box
+            $(wrapper).append('<div><input type="text" class="form-control broj" maxlength="80" placeholder="Sastojak..." name="ingredient_' + t + '"/><a href="#" class="remove_field">Izbriši</a></div>'); //add input box
             x++;
             t++; 
 	  }
@@ -184,7 +187,7 @@
         if(x < max_fields){ //max input box allowed
 	
 		     //text box increment
-            $(wrapper).append('<div><textarea type="text" rows="3" class="form-control broj-step" maxlength="499" placeholder="' + s + '. korak" name="step_' + t + '"></textarea><a href="#" class="remove_field">Izbriši</a></div>'); //add input box
+            $(wrapper).append('<div><textarea type="text" rows="3" class="form-control broj-step" maxlength="300" placeholder="' + s + '. korak" name="step_' + t + '"></textarea><a href="#" class="remove_field">Izbriši</a></div>'); //add input box
             x++;
             t++;
             s++; 

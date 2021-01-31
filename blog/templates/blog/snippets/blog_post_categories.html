@@ -1,0 +1,123 @@
+{% load static %}
+<style type="text/css">
+	.card-horizontal{
+		max-width: 700px;
+		width: 100%;
+	}
+	.card {
+		max-width: 700px;
+		width: 100%;
+	}
+	.card-body{
+		padding: 20px;
+	}
+	.gutters-sm {
+        margin-right: -8px;
+        margin-left: -8px;
+    }
+
+    .gutters-sm>.col, .gutters-sm>[class*=col-] {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+</style>
+
+<div class="container">
+	
+	<div class="row">
+		<div class="card shadow m-auto p-4">
+			<h3 class="card-title mb-0">Kategorije</h3>
+			<hr>
+			<div class="row gutters-sm">
+				<div class="col-sm-6 p-1">
+					<div class="card-horizontal shadow-sm border">
+						<a href="{% url 'category' cats=1 %}"><img class="img-fluid" width="100px" src="{% static 'dorucak.jpg' %}" style="min-height: 100px; min-width: 100px;"></a>
+						<div class="card-body mt-2 mb-2">
+							<a href="{% url 'category' cats=1 %}">
+								<h5 class="card-title m-auto pt-2">Doručak</h5>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 p-1">
+					<div class="card-horizontal shadow-sm border">
+						<a href="{% url 'category' cats=2 %}"><img class="img-fluid" width="100px" src="{% static 'hladnopredjelo.jpg' %}" style="min-height: 100px; min-width: 100px;"></a>
+						<div class="card-body mt-2 mb-2">
+							<a href="{% url 'category' cats=2 %}">
+								<h5 class="card-title m-auto pt-2">Hladno predjelo</h5>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row gutters-sm">
+				<div class="col-sm-6 p-1">
+					<div class="card-horizontal shadow-sm border">
+						<a href="{% url 'category' cats=3 %}"><img class="img-fluid" width="100px" src="{% static 'toplopredjelo.jpg' %}" style="min-height: 100px; min-width: 100px;"></a>
+						<div class="card-body mt-2 mb-2">
+							<a href="{% url 'category' cats=3 %}">
+								<h5 class="card-title m-auto pt-2">Toplo predjelo</h5>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 p-1">
+					<div class="card-horizontal shadow-sm border">
+						<a href="{% url 'category' cats=4 %}"><img class="img-fluid" width="100px" src="{% static 'glavnojelo.jpg' %}" style="min-height: 100px; min-width: 100px;"></a>
+						<div class="card-body mt-2 mb-2">
+							<a href="{% url 'category' cats=4 %}">
+								<h5 class="card-title m-auto pt-2">Glavno jelo</h5>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row gutters-sm">
+				<div class="col-sm-6 p-1">
+					<div class="card-horizontal shadow-sm border">
+						<a href="{% url 'category' cats=5 %}"><img class="img-fluid" width="100px" src="{% static 'desert.jpg' %}" style="min-height: 100px; max-height: 100px; min-width: 100px;"></a>
+						<div class="card-body mt-2 mb-2">
+							<a href="{% url 'category' cats=5 %}">
+								<h5 class="card-title m-auto pt-2">Desert</h5>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 p-1">
+					<div class="card-horizontal shadow-sm border">
+						<a href="{% url 'category' cats=6 %}"><img class="img-fluid" width="100px" src="{% static 'salata.jpg' %}" style="min-height: 100px; min-width: 100px;"></a>
+						<div class="card-body mt-2 mb-2">
+							<a href="{% url 'category' cats=6 %}">
+								<h5 class="card-title m-auto pt-2">Salate</h5>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row gutters-sm">
+				<div class="col-sm-6 p-1">
+					<div class="card-horizontal shadow-sm border">
+						<a href="{% url 'category' cats=7 %}"><img class="img-fluid" width="100px" src="{% static 'prilog.jpg' %}" style="min-height: 100px; max-height: 100px; min-width: 100px;"></a>
+						<div class="card-body mt-2 mb-2">
+							<a href="{% url 'category' cats=7 %}">
+								<h5 class="card-title m-auto pt-2">Prilozi</h5>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 p-1">
+					<div class="card-horizontal shadow-sm border">
+						<a href="{% url 'category' cats=8 %}"><img class="img-fluid" width="100px" src="{% static 'ostalo.jpg' %}" style="min-height: 100px; min-width: 100px;"></a>
+						<div class="card-body mt-2 mb-2">
+							<a href="{% url 'category' cats=8 %}">
+								<h5 class="card-title m-auto pt-2">Ostalo</h5>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<p class="m-auto pt-1"><a href="{% url 'home' %}">Povratak na naslovnicu</a></p>
+		</div>
+	</div>
+</div>
