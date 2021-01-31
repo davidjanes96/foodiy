@@ -65,17 +65,35 @@ def account_view(request):
             form.initial = {
                 "username": request.POST['username'],
                 "email": request.POST['email'],
+                "gender": request.POST['gender'],
+                "get_gender_display": request.user.get_gender_display(),
+                "date_of_birth": request.user.date_of_birth,
             }
             form.save()
-            context['success_message'] = "Ažurirano."
+            context['success_message'] = "Ažurirano"
+        else:
+            form.initial = {
+                "username": request.POST['username'],
+                "email": request.POST['email'],
+                "gender": request.POST['gender'],
+                "get_gender_display": request.user.get_gender_display(),
+                "date_of_birth": request.user.date_of_birth,
+            }
+
+
     else:
         form = AccountUpdateForm(
             initial={
                 "email": request.user.email,
                 "username": request.user.username,
+                "gender": request.user.gender,
+                "get_gender_display": request.user.get_gender_display(),
+                "date_of_birth": request.user.date_of_birth,
             }
         )
     context['account_form'] = form
+    
+
 
     blog_posts = BlogPost.objects.filter(author=request.user)
     favorite_posts = request.user.favorite.all()

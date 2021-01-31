@@ -1,5 +1,5 @@
 {% extends 'index.html' %}
-
+{% load static %}
 {% block content %}
 
 <style type="text/css">
@@ -47,81 +47,371 @@
     .okvir{
         border: 1px solid #000000;
     }
+    .sticky-offset{
+        top: 130px;
+    }
+
+    .card-horizontal {
+		display: flex;
+		flex: 1 1 auto;
+	}    
+
+    .main-body {
+        padding: 15px;
+    }
+    .card {
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+    }
+
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 0 solid rgba(0,0,0,.125);
+        border-radius: .25rem;
+    }
+
+    .card-body {
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: 1rem;
+    }
+
+    .gutters-sm {
+        margin-right: -8px;
+        margin-left: -8px;
+    }
+
+    .gutters-sm>.col, .gutters-sm>[class*=col-] {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+    .mb-3, .my-3 {
+        margin-bottom: 1rem!important;
+    }
+
+    .bg-gray-300 {
+        background-color: #e2e8f0;
+    }
+    .h-100 {
+        height: 100%!important;
+    }
+    .shadow-none {
+        box-shadow: none!important;
+    }
+    #myBtn {
+        display: none;
+        position: fixed;
+        bottom: auto;
+        right: 40px;
+        margin:auto ;
+        z-index: 99;
+        
+    }
+
 </style>
+<!--NOVO-->
 
-<form class="form-signin" method="post">{% csrf_token %}
-    <h1 class="h3 mb-3 font-weight-normal text-center">Korisnički račun</h1>
-
-    <input type="username" name="username" id="inputUsername" class="form-control" placeholder="Korisničko ime" required autofocus value="{{account_form.initial.username}}">
-
-    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="E-mail" required value="{{account_form.initial.email}}">
+<div class="container">
+    <div class="main-body">
     
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card shadow">
+                     <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <p class="pt-3 pl-1"><embed style="pointer-events: none;" src="{% static 'lonac.svg' %}" alt="lonac.svg" width="280px" height="140px"></p>
+                            <div class="mt-3 pb-2">
+                                <p class="text-secondary mb-1">Korisnik:</p>
+                                <h4>{{account_form.initial.username}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer pb-0">
+                        <p class="text-muted">Pridružio se: {{request.user.date_joined|date:"d. E Y."}}</p>
+                    </div>
+                </div>
+            </div>
 
-    <!-- errors -->
-    {% for field in account_form %}
-        <p>
-        {% for error in field.errors %}
-            <p style="color: red">{{error}}</p>
-        {% endfor %}
-        </p>
-    {% endfor %}
+            <div class="col-md-8">    
+                <!--PREVIEW-->
+                <div class="card mb-3 shadow" id="oldDiv" style="display: block">               
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-8 pt-2">
+                                <h4>Postavke računa:</h4>
+                            </div>
+                            <div class="col-4 pt-2 text-secondary">
+                                <button class="btn btn-sm btn-outline-primary float-right pr-2" type="button" onclick="newDivHere()">Uredi</button>
+                            </div>
+                        </div>
+                        {% if success_message %}
+                                <p style="color: green;"><i class="fa fa-check" style="color:green;"></i>{{success_message}}</p>
+                        {% endif %}
+                        <hr class="mt-2">
 
-    {% if account_form.non_field_errors %}
-        <div style="color: red">
-            <p>{{account_form.non_field_errors}}</p>
-        </div>
-    {% endif %}
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h6 class="mb-0">Korisničko ime</h6>
+                            </div>
+                            <div class="col-sm-8 text-secondary">
+                                {{account_form.initial.username}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h6 class="mb-0">E-mail</h6>
+                            </div>
+                            <div class="col-sm-8 text-secondary">
+                                {{account_form.initial.email}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h6 class="mb-0">Lozinka</h6>
+                            </div>
+                            <div class="col-sm-8 text-secondary">
+                                <a class="m-auto" href="{% url 'password_change' %}">Promjena lozinke</a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h6 class="mb-0">Spol</h6>
+                            </div>
+                            <div class="col-sm-8 text-secondary">
+                                {{account_form.initial.get_gender_display}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h6 class="mb-0">Datum rođenja</h6>
+                            </div>
+                            <div class="col-sm-8 text-secondary">
+                                {{account_form.initial.date_of_birth}}
+                            </div>
+                        </div>    
+                    </div>
+                </div>
 
-    {% if success_message %}
-        <p style="color: green; text-align: center;">{{success_message}}</p>
-    {% endif %}
+                <!--EDIT-->
+                
+                <div class="card mb-3 shadow" id="newDiv" style="display: none">
+                    <form method="post">{% csrf_token %}               
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6 pt-2">
+                                    <h4>Postavke računa:</h4>
+                                </div>
+                            </div>
+                            <hr class="mt-2">
 
-    <div class="d-flex felx-column mb-3">
-        <a class="m-auto" href="{% url 'password_change' %}">Promjena lozinke</a>
-    </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h6 class="mb-0 pt-2">Korisničko ime</h6>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="username" name="username" id="inputUsername" class="form-control" placeholder="Korisničko ime" required autofocus value="{{account_form.initial.username}}">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h6 class="mb-0 pt-2">E-mail</h6>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="E-mail" required value="{{account_form.initial.email}}">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h6 class="mb-0">Lozinka</h6>
+                                </div>
+                                <div class="col-sm-8">
+                                    <a class="m-auto" href="{% url 'password_change' %}">Promjena lozinke</a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h6 class="mb-0 pt-2">Spol</h6>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select class="form-select form-control razmak" id="inputGender" name="gender">
+                                        <option selected value="{{account_form.initial.gender}}">{{account_form.initial.get_gender_display}}</option>
+                                        <option value="0">Muško</option>
+                                        <option value="1">Žensko</option>
+                                        <option value="2">Neodređeno</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h6 class="mb-0 pt-2">Datum rođenja</h6>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="date" placeholder="Datum rođenja" id="inputD_O_B" class="form-control" name="date_of_birth" value="{{account_form.initial.date_of_birth|date:'Y-m-d'}}">
+                                </div>
+                            </div>
+                            <hr>
+                            <div>
+                                {% for field in account_form %}
+                                    <p>
+                                        {% for error in field.errors %}
+                                            <p style="color: red" id="error">{{error}}</p>
+                                        {% endfor %}
+                                    </p>
+                                {% endfor %}
     
-    <button class="btn btn-lg btn btn-outline-primary btn-block" type="submit">Spremi</button>
-
-
-  </form>
-
-<div class="container mt-4 p-4">
-    <div class="row">
-        <div class="blog-posts">
-            <h3 class="mb-3 font-weight-normal">Moje objave:</h3>
-            {% if blog_posts %}
-                <ul>
-                {% for post in blog_posts %}
-                    <a href="{% url 'blog:detail' post.slug %}" style="text-decoration: none;">
-                        <li class="list-group-item">{{post}}</li>
-                    </a>
-                {% endfor %}
-                </ul>
-            {% else %}
-            <p>Trenutno nemate niti jednu objavu. Stvori objavu <a href="{% url 'blog:create' %}">ovdje</a>.</p>
-
-            {% endif %}
+                                {% if account_form.non_field_errors %}
+                                    <div style="color: red">
+                                        <p id="errortwo">{{account_form.non_field_errors}}</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="row gutters-sm">
+                                <div class="col-sm-3 pt-1 pb-1">
+                                    <button class="btn btn-md btn-outline-primary btn-block" type="submit">Spremi</button>
+                                </div>
+                                <div class="col-sm-3 pt-1 pb-1">
+                                    <a class="btn btn-md btn-outline-danger btn-block" href="{% url 'account' %}">Odustani</a>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    
+                </form>
+            </div>
         </div>
+        <!--OBJAVE-->
+        <div class="row gutters-sm">
+            <div class="col-sm-6 mb-3">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Moje objave</i></h6>
+                        
+                        {% if blog_posts %}
+                            {% for post in blog_posts %}
+                            <div class="card shadow mt-3">
+                                <div class="card-horizontal">
+                                    <a href="{% url 'blog:detail' post.slug %}">
+                                        <img class="img-fluid" src="{{post.image.url}}" style="max-width: 130px;">
+                                    </a>
+                                    <div class="card-body p-1 pl-2" style=" 
+                                    overflow: hidden;
+                                    display: -webkit-box;
+                                    -webkit-line-clamp: 3;
+                                    -webkit-box-orient: vertical;">
+                                        <a href="{% url 'blog:detail' post.slug %}">
+                                            <h5 class="card-title">{{post.title}}</h5>
+                                        </a>
+                                        <p class="card-text">{{post.body}}<p>
+                                    </div>    
+                                </div>
 
-        <div class="favorite-posts">
-            <h3 class="mb-3 font-weight-normal">Moji favoriti:</h3>
-            {% if favorite_posts %}
-                <ul>
-                {% for post in favorite_posts %}
-                    <a href="{% url 'blog:detail' post.slug %}" style="text-decoration: none;">
-                        <li class="list-group-item">{{post}}</li>
-                        <span><a href="{% url 'favorite_remove' slug=post.slug %}">Ukloni</a></span>
-                    </a>
-                {% endfor %}
-                </ul>
-            {% else %}
-            <p>Trenutno nemate niti jednu objavu u favoritima.</p>
+                                <div class="card-footer pb-0 text-muted">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p class="float-left">Objavljeno: {{post.date_published}}</p>
+                                        </div>
+                                    </div>	
+                                    
+                                </div>
 
-            {% endif %}
+                            </div>
+
+
+                            {% endfor %}
+
+                        {% else %}
+                            <p>Trenutno nemate niti jednu objavu. Stvori objavu <a href="{% url 'blog:create' %}">ovdje</a>.</p>
+
+                        {% endif %}
+
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+              <div class="card shadow">
+                <div class="card-body">
+                    <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Favoriti</i></h6>
+                    
+                    {% if favorite_posts %}
+                            {% for post in favorite_posts %}
+                            <div class="card shadow mt-3">
+                                <div class="card-horizontal">
+                                    <a href="{% url 'blog:detail' post.slug %}">
+                                        <img class="img-fluid" src="{{post.image.url}}" style="max-width: 130px;">
+                                    </a>
+                                    <div class="card-body p-1 pl-2" style=" 
+                                    overflow: hidden;
+                                    display: -webkit-box;
+                                    -webkit-line-clamp: 3;
+                                    -webkit-box-orient: vertical;">
+                                        <a href="{% url 'blog:detail' post.slug %}">
+                                            <h5 class="card-title">{{post.title}}</h5>
+                                        </a>
+                                        <p class="card-text">{{post.body}}<p>
+                                    </div>    
+                                </div>
+
+                                <div class="card-footer pb-0 text-muted">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p class="mb-0">Autor: {{post.author}}</p>
+                                            <p class="mb-2"><a href="{% url 'favorite_remove' slug=post.slug %}">Ukloni</a></p>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="float-right">{{post.date_published|date:'d. m. y. H:i'}}</p>
+                                        </div>
+                                    </div>	                                   
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        {% else %}
+                        <p>Trenutno nemate niti jednu objavu u favoritima.</p>
+
+                        {% endif %}
+                  
+                  
+                </div>
+              </div>
+            </div>
+
         </div>
-
     </div>
-
 </div>
+
+
+<script> 
+
+    function newDivHere() {
+        document.getElementById("oldDiv").style.display="none";
+        document.getElementById("newDiv").style.display="block";
+    }
+
+    var error = document.getElementById("error");
+    var errortwo = document.getElementById("errortwo");
+
+    if (error) {
+        newDivHere();
+    }
+    if (errortwo) {
+        newDivHere();
+    }
+    
+</script>
 
 {% endblock content %}
