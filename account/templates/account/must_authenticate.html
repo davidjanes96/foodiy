@@ -4,9 +4,12 @@
 {% block content %}
 
 <div class="container">
-    <div class="d-flex flex-column">
-        <p class="m-auto">Za pristup ovoj stranici potrebna je <a href="{% url 'login' %}">prijava</a>.</p>
-        <p class="m-auto"><a href="{% url 'home' %}">Povratak na naslovnicu.</a></p>
+    <div class="d-flex flex-column pt-4">
+        <div class="card shadow p-3">
+            <h5 class="m-auto pt-3">Za pristup ovoj stranici potrebna je <a href="{% url 'login' %}">prijava</a>.</h5>
+            <br>
+            <h5 class="m-auto pb-3"><a href="{% url 'home' %}">Povratak na naslovnicu</a></h5>
+        </div>
     </div>
 </div>
 

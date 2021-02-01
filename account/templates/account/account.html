@@ -103,15 +103,6 @@
     .shadow-none {
         box-shadow: none!important;
     }
-    #myBtn {
-        display: none;
-        position: fixed;
-        bottom: auto;
-        right: 40px;
-        margin:auto ;
-        z-index: 99;
-        
-    }
 
 </style>
 <!--NOVO-->
@@ -297,7 +288,7 @@
             <div class="col-sm-6 mb-3">
                 <div class="card shadow">
                     <div class="card-body">
-                        <h4 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Moje objave</i></h4>
+                        <h4 class="d-flex align-items-center mb-3 text-muted" style="font-weight: bold;">Moje objave</h4>
                         
                         {% if blog_posts %}
                             {% for post in blog_posts %}
@@ -345,7 +336,7 @@
             <div class="col-sm-6 mb-3">
               <div class="card shadow">
                 <div class="card-body">
-                    <h4 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Favoriti</i></h4>
+                    <h4 class="d-flex align-items-center mb-3 text-muted" style="font-weight: bold;">Favoriti</h4>
                     
                     {% if favorite_posts %}
                             {% for post in favorite_posts %}
@@ -393,6 +384,7 @@
         </div>
     </div>
 </div>
+<button onclick="topFunction()" id="myBtn" title="Go to top" class="btn btn-outline-primary"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
 
 
 <script> 

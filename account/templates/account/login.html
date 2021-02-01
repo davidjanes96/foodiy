@@ -34,41 +34,45 @@
         border: 1px solid #000000;
     }
 </style>
+<div class="container" style="max-width: 550px;">
+    <div class="pt-4">
+        <div class="card shadow pb-4">
+            <form class="form-signin" method="post">{% csrf_token %}
+                <div class="d-flex flex-column pb-3">
+                    <a href="{% url 'home' %}" class="pt-3 m-auto"><embed style="pointer-events: none;" src="{% static 'logo.svg' %}" alt="logo.svg" width="192px" height="80px"></a>
+                </div>
+                <h1 class="h3 mb-3 font-weight-normal text-center">Prijava</h1>
 
-<form class="form-signin" method="post">{% csrf_token %}
-    <div class="d-flex flex-column pb-3">
-        <a href="{% url 'home' %}" class="pt-3 m-auto"><embed style="pointer-events: none;" src="{% static 'logo.svg' %}" alt="logo.svg" width="192px" height="80px"></a>
-    </div>
-    <h1 class="h3 mb-3 font-weight-normal text-center">Prijava</h1>
+                <input type="username" name="username" id="inputUsername" class="form-control" placeholder="Korisničko ime" required autofocus>
 
-    <input type="username" name="username" id="inputUsername" class="form-control" placeholder="Korisničko ime" required autofocus>
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Lozinka" required>
 
-    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Lozinka" required>
+                <!-- errors -->
+                {% for field in login_form %}
+                    <p>
+                    {% for error in field.errors %}
+                        <p style="color: red">{{error}}</p>
+                    {% endfor %}
+                    </p>
+                {% endfor %}
 
-    <!-- errors -->
-    {% for field in login_form %}
-        <p>
-        {% for error in field.errors %}
-            <p style="color: red">{{error}}</p>
-        {% endfor %}
-        </p>
-    {% endfor %}
+                {% if login_form.non_field_errors %}
+                    <div style="color: red">
+                        <p>{{login_form.non_field_errors}}</p>
+                    </div>
+                {% endif %}
 
-    {% if login_form.non_field_errors %}
-        <div style="color: red">
-            <p>{{login_form.non_field_errors}}</p>
+                <div class="d-flex felx-column mb-2">
+                    <a class="m-auto" href="{% url 'password_reset' %}">Zaboravio/la sam lozinku.</a>
+                </div>
+
+                <p class="mb-0 font-weight-normal text-center">Nemaš korisnički račun?</p>
+                <p class="text-center mb-3"><a href="{% url 'register' %}">Registriraj se</a>!</p>
+                
+                <button class="btn btn-lg btn btn-outline-primary btn-block" type="submit">Prijava</button>
+
+            </form>
         </div>
-    {% endif %}
-
-    <div class="d-flex felx-column mb-2">
-        <a class="m-auto" href="{% url 'password_reset' %}">Zaboravio/la sam lozinku.</a>
     </div>
-
-    <p class="mb-0 font-weight-normal text-center">Nemaš korisnički račun?</p>
-    <p class="text-center mb-3"><a href="{% url 'register' %}">Registriraj se</a>!</p>
-    
-    <button class="btn btn-lg btn btn-outline-primary btn-block" type="submit">Prijava</button>
-
-  </form>
-
+</div>
 {% endblock content %}

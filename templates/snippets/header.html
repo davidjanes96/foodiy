@@ -64,18 +64,18 @@
         border-radius:20px;
     }
 
-    .btn-outline-primary, .btn-outline-primary:visited {
+    .btn-outline-primary, .btn-outline-primary:visited .btnMy:visited, .btnMy {
         color: orange !important;
         border-color: orange !important;
     }
-    .btn-outline-primary:hover, .btn-outline-primary:focus {
+    .btn-outline-primary:hover, .btn-outline-primary:focus, .btnMy:hover, .btnMy:focus {
         color: #ffffff !important;
         background-color: orange !important;
         border-color:  rgba(255, 166, 0, 0.6) !important;
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 166, 0, 0.6) !important;
     }
 
-    .btn-outline-primary:active:focus {
+    .btn-outline-primary:active:focus, .dropdown:active:focus, .dropdown-item:active:focus {
         border-color:  rgba(255, 166, 0, 0.6) !important;
         background-color: rgb(255, 180, 40) !important;
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(177, 115, 0, 0.8) !important;
@@ -87,6 +87,13 @@
     .form-control:focus, .form-control:active {
     border-color:  rgba(255, 166, 0, 0.6) !important;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 166, 0, 0.6);
+    }
+    #myBtn {
+        display: none;
+        position: fixed;
+        z-index: 999999999;
+        bottom: 20%;
+        right: 49%;
     }
 
 </style>
@@ -119,7 +126,7 @@
                     <a class="text-dark" href="{% url 'account' %}">Korisnički račun</a>
                 </nav>
                 <nav class="my-2 my-md-0 mr-3">
-                    <a class="btn btn-outline-primary" href="{% url 'feedback:feedback' %}">Ocijeni Aplikaciju</a>
+                    <a class="px-3 py-3 text-dark border-left border-right nav-bar" href="{% url 'feedback:feedback' %}">Ocijeni Aplikaciju</a>
                 </nav>
                 <a class="btn btn-outline-primary" href="{% url 'logout' %}">Odjava</a>
             {% else %}
@@ -208,3 +215,4 @@
 });
 	
 </script>
+

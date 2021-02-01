@@ -236,7 +236,7 @@
                         Pozdrav, {{request.user.username}}
                     {% endif %}
                 </h5>
-                <a href="{% url 'home' %}" class="pt-0 m-auto"><embed style="pointer-events: none;" src="{% static 'lonac.svg' %}" alt="lonac.svg" width="192px" height="80px"></a>
+                <a href="{% url 'blog:create' %}" class="pt-0 m-auto"><embed style="pointer-events: none;" src="{% static 'lonac.svg' %}" alt="lonac.svg" width="192px" height="80px"></a>
                 <p class="m-auto pb-3 pl-4 pr-4 pt-2 card-text text-justify">Ukoliko znate neki recept za jaaako ukusno jelo te želite još nekome dati priliku za eksperimentiranje s različitim namirnicama i otkrivanje novih okusa, učinite to ovdje.</p>
                 <p class="m-auto pb-3 pl-4 pr-4 card-text text-justify">Nadahnite druge zanimljivim idejama i prijedlozima za pečenje i kuhanje!</p>
                 <p class="m-auto pb-3 pt-2"><a class="btn btn-outline-primary" href="{% url 'blog:create' %}">Objavi</a>
@@ -245,5 +245,7 @@
         <!-- End Create Post (Right side) -->
     </div>
 </div>
+<button onclick="topFunction()" id="myBtn" title="Go to top" class="btn btn-outline-primary"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
+
 
 {% endblock content %}

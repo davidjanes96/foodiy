@@ -34,7 +34,7 @@
         
         {% if blog_posts.has_next %}
             <li class="page-item">
-              <a class="page-link" style="color: orange;" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.next_page_number }}">Slijedeća</a>
+              <a class="page-link" style="color: orange;" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.next_page_number }}">Sljedeća</a>
             </li>
             <li class="page-item">
               <a class="page-link" style="color: orange;" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.paginator.num_pages }}">Zadnja &raquo;</a>
