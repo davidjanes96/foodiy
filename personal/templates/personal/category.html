@@ -136,26 +136,42 @@
                         <h4 class="card-title pt-2">Kategorija: Prilozi</h4>
                         {% elif cats == '8' %}
                         <h4 class="card-title pt-2">Kategorija: Ostalo</h4>
-                {% endif %}
+                        {% endif %}
                     </div>
+                    
                     <div class="col-3">
                         <div class="dropdown float-right">
                             <button class="btn btnMy dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Sortiraj
                             </button>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="#">Najnovije</a>
-                              <a class="dropdown-item" href="#">Najbolje ocijenjeno</a>
-                              <a class="dropdown-item" href="#">Kalorije (od nižeg prema višem)</a>
-                              <a class="dropdown-item" href="#">Kalorije (od višeg prema nižem)</a>
-                              <a class="dropdown-item" href="#">Vrijeme (od nižeg prema višem)</a>
-                              <a class="dropdown-item" href="#">Vrijeme (od višeg prema nižem)</a>
+                              <a class="dropdown-item" href="{% url 'category' cats=cats sort=1 %}">Najnovije</a>
+                              <a class="dropdown-item" href="{% url 'category' cats=cats sort=2 %}">Najažuriranije</a>
+                              <a class="dropdown-item" href="{% url 'category' cats=cats sort=3 %}">Kalorije (od manje prema više)</a>
+                              <a class="dropdown-item" href="{% url 'category' cats=cats sort=4 %}">Kalorije (od više prema manje)</a>
+                              <a class="dropdown-item" href="{% url 'category' cats=cats sort=5 %}">Vrijeme (od manje prema više)</a>
+                              <a class="dropdown-item" href="{% url 'category' cats=cats sort=6 %}">Vrijeme (od više prema manje)</a>
                             </div>
                           </div>
                     </div>
-
                 </div>
-
+                
+                <div class="text-muted pb-0">
+                    {% if sort == 1 %}
+                    <p>Sortirano: Najnovije</p>
+                    {% elif sort == 2 %}
+                    <p>Sortirano: Najažuriranje</p>
+                    {% elif sort == 3 %}
+                    <p>Sortirano: Kalorije (od manje prema više)</p>
+                    {% elif sort == 4 %}
+                    <p>Sortirano: Kalorije (od više prema manje)</p>
+                    {% elif sort == 5 %}
+                    <p>Sortirano: Vrijeme (od manje prema više)</p>
+                    {% elif sort == 6 %}
+                    <p>Sortirano: Vrijeme (od više prema manje)</p>
+                    {% endif %}
+                </div>
+            
                 <hr class="mt-2">
 
                 {% if category_posts %}

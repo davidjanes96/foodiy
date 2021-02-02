@@ -65,7 +65,7 @@ def categories_screen_view(request):
 
     return render(request, "personal/categories.html", context)
 
-def category_view(request, cats):
+def category_view(request, cats, sort):
     
     context = {}
 
@@ -79,7 +79,20 @@ def category_view(request, cats):
             top_rated_blog = blog
             top_rated=blog.get_average()
 
-    category_posts = sorted(BlogPost.objects.filter(category=cats), key=attrgetter('date_updated'), reverse=True)
+    if sort == 1:
+        category_posts = sorted(BlogPost.objects.filter(category=cats), key=attrgetter('date_published'), reverse=True)
+    elif sort == 2:
+        category_posts = sorted(BlogPost.objects.filter(category=cats), key=attrgetter('date_updated'), reverse=True)
+    elif sort == 3:
+        category_posts = sorted(BlogPost.objects.filter(category=cats), key=attrgetter('calories'))
+    elif sort == 4:
+        category_posts = sorted(BlogPost.objects.filter(category=cats), key=attrgetter('calories'), reverse=True)
+    elif sort == 5:
+        category_posts = sorted(BlogPost.objects.filter(category=cats), key=attrgetter('time'))
+    elif sort == 6:
+        category_posts = sorted(BlogPost.objects.filter(category=cats), key=attrgetter('time'), reverse=True)
+    else:
+        category_posts = sorted(BlogPost.objects.filter(category=cats), key=attrgetter('date_published'), reverse=True)
 
     #stranice
     page = request.GET.get('page', 1)
@@ -96,6 +109,7 @@ def category_view(request, cats):
     context['blog_posts_recent'] = blog_posts_recent
     context['top_rated_blog'] = top_rated_blog
     context['cats'] = cats
+    context['sort'] = sort
     context['category_posts'] = category_posts
 
     return render(request, 'personal/category.html', context)
