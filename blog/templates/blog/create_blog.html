@@ -28,7 +28,7 @@
 </style>
   
 <div class="container">
-    <div class="row">
+    <div class="row pt-4">
         <div class="col-lg-8 offset-lg-2 card mb-3 shadow">
             <form class="create-form" method="post" enctype="multipart/form-data">{% csrf_token %}
                     <h1 class="h3 mb-3 font-weight-normal text-center mt-3">Objavi svoj recept</h1>
@@ -93,8 +93,8 @@
                 <!-- Image -->
                 <br>
                 <div class="form-group">
-                    <label for="id_image">Slika:</label>
-                    <input  type="file" name="image" id="id_image" accept="image/*" required>
+                    <label for="id_image">Slika:</label> 
+                        <input style="width: 100%;" type="file" name="image" id="id_image" accept="image/*" required>                    
                 </div>
 
                 <br>
