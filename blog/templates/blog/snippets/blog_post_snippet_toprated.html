@@ -10,22 +10,31 @@
 		display: flex;
 		flex: 1 1 auto;
 	}
-	.img-fluid-extra {
-		max-width: 160px;
-		min-height: 80px;
-	}
 	.checked {
     color:orange;
-}
+	}
+	.crop {
+        max-width: 120px;
+		min-width: 120px;
+		max-height: 120px;
+		min-height: 120px;
+		overflow: hidden;	
+    }
+	.crop-img {
+		max-width: 120px;
+		min-height: 120px;
+	}
 </style>
 
 {% if blog_post %}
 		
 		<!-- Blog Post -->
 		<div class="card-horizontal">
+			<div class="crop">
 				<a href="{% url 'blog:detail' blog_post.slug %}">
-					<img class="img-fluid img-fluid-extra" width="300px" src="{{blog_post.image.url}}">
+					<img class="crop-img"  src="{{blog_post.image.url}}">
 				</a>
+			</div>
 			<div class="card-body p-1 pl-2" style=" 
 			overflow: hidden;
 			display: -webkit-box;

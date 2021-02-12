@@ -1,20 +1,12 @@
-<style type="text/css">
-	.card{
-		max-width: 700px;
-		width: 100%;
-	}
-	.card-body{
-		padding: 20px;
-	}
-</style>
-
 {% if blog_post %}
 		
 		<!-- Blog Post -->
 		<div class="card-horizontal">
-			<a href="{% url 'blog:detail' post.slug %}">
-				<img class="img-fluid img-fluid-extra" width="300px" src="{{blog_post.image.url}}">
-			</a>
+			<div class="crop">
+				<a href="{% url 'blog:detail' post.slug %}">
+					<img class="crop-img" src="{{blog_post.image.url}}">
+				</a>
+			</div>
 			<div class="card-body p-1 pl-2" style=" 
 			overflow: hidden;
 			display: -webkit-box;
