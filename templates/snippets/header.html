@@ -122,8 +122,8 @@
                 </form>
             </div>
             {% if request.user.is_authenticated %}
-                <nav class="my-2 my-md-0 mr-3">
-                    <a class="text-dark" href="{% url 'account' %}">Korisnički račun</a>
+                <nav class="my-2 my-md-0">
+                    <a class="px-3 py-3 text-dark border-left border-right nav-bar" href="{% url 'account' %}">Korisnički račun</a>
                 </nav>
                 <nav class="my-2 my-md-0 mr-3">
                     <a class="px-3 py-3 text-dark border-left border-right nav-bar" href="{% url 'feedback:feedback' %}">Ocijeni Aplikaciju</a>
